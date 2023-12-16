@@ -1,0 +1,188 @@
+var proprietes = {
+    "nom": {
+        "bsonType": "string",
+        "description": "Chaîne de caractères - obligatoire"
+    },
+    "prix": {
+        "bsonType": "double",
+        "description": "Float - obligatoire"
+    },
+    "reference.serie": {
+        "bsonType": "string",
+        "description": "Chaîne de caractères"
+    },
+    "reference.personnages": {
+        "bsonType": "array",
+        "description": "tableau"
+    },
+    "taille": {
+        "bsonType": "int",
+        "description": "Int"
+    },
+    "matiere": {
+        "enum": ["PVC", "Résine", "Résine/PVC"],
+        "description": "Enumération"
+    },
+    "editeur": {
+        "bsonType": "string",
+        "description": "Chaîne de caractères"
+    },
+    "nbEnStock": {
+        "bsonType": "int",
+        "description": "Int"
+    },
+    "dateDeSortie": {
+        "bsonType": "date",
+        "description": "date"
+    }
+}
+
+db.createCollection("figurines",
+{
+    validator: {
+        $jsonSchema: {
+            "bsonType": "object",
+            "required": ["nom", "prix"],
+            "properties": proprietes
+        }
+    }
+}
+)
+
+var figurines = [{
+        "nom":"Assassination Classroom - Figurine Koro Sensei SFC Violet Ver.",
+        "prix":37.90,
+        "reference":{
+            "serie":"Assassination Classroom",
+            "personnages":["Koro Sensei"]
+        },
+        "taille":20,
+        "matiere":"PVC",
+        "editeur":"ABYStyle",
+        "version":"Violet",
+        "nbEnStock":500,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"Resident Evil 3 - Statue Jill Valentine Deluxe", 
+        "prix":2249.90, 
+        "reference":{
+            "serie":"Resident Evil 3",
+            "personnages":["Jill Valentine"] 
+        },
+        "taille":50, 
+        "matiere":"Résine",
+        "editeur":"Prime 1 Studios",
+        "version":"Deluxe", 
+        "nbEnStock":20,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"Berserk - Figurine Guts Legacy Art Bonus Ver.", 
+        "prix":1089.90, 
+        "reference":{
+            "serie":"Berserk",
+            "personnages":["Guts"] 
+        },
+        "taille":40, 
+        "matiere":"Résine",
+        "editeur":"Prime 1 Studios",
+        "version":"Legacy Art Bonus", 
+        "nbEnStock":100,
+        "dateDeSortie": new Date("2024-03-01")
+    },
+    {
+        "nom":"Solo Leveling - Statue Sung Jin Woo et ses Ombres", 
+        "prix":899.90, 
+        "reference":{
+            "serie":"Solo Leveling",
+            "personnages":["Sung Jin Woo", "Beru", "Tusk", "Iron", "Tank", "Igris"] 
+        },
+        "taille":46, 
+        "matiere":"Résine/PVC",
+        "editeur":"Kitsune Statue", 
+        "nbEnStock":15,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"Yu-Gi-Oh! - Statue Yami Yugi & Slifer Le Dragon Céleste", 
+        "prix":799.10, 
+        "reference":{
+            "serie":"Yu-Gi-Oh!",
+            "personnages":["Yami Yugi", "Slifer"] 
+        },
+        "taille":51, 
+        "matiere":"Résine",
+        "editeur":"Taka Corp Studio",
+        "nbEnStock":10,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"Jujutsu Kaisen - Figurine Gojo Satoru (FREEing)", 
+        "prix":824.90, 
+        "reference":{
+            "serie":"Jujutsu Kaisen",
+            "personnages":["Gojo Satoru"] 
+        },
+        "taille":53, 
+        "matiere":"PVC",
+        "editeur":"FREEing",
+        "nbEnStock":150,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"Naruto - Figurine Sarutobi Sandaime Hokage - The Last Fight", 
+        "prix":699.90, 
+        "reference":{
+            "serie":"Naruto",
+            "personnages":["Hiruzen Sarutobi", "Enma"] 
+        },
+        "taille":65, 
+        "matiere":"PVC",
+        "editeur":"Oniri Creations",
+        "nbEnStock":5,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"My Hero Academia - Figurine Izuku Midoriya Vs Muscular S-Fire series", 
+        "prix":649.90, 
+        "reference":{
+            "serie":"My Hero Academia",
+            "personnages":["Izuku Midoriya", "Muscular"] 
+        },
+        "taille":30, 
+        "matiere":"PVC",
+        "editeur":"Takara Tomy",
+        "version":"S-Fire series", 
+        "nbEnStock":80,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+    {
+        "nom":"Chainsaw Man - Figurine Chainsaw Man 1/7", 
+        "prix":629.90, 
+        "reference":{
+            "serie":"Chainsaw Man",
+            "personnages":["Denji"] 
+        },
+        "taille":28, 
+        "matiere":"PVC",
+        "editeur":"Estream",
+        "nbEnStock":180,
+        "dateDeSortie": new Date("2023-12-14")
+    },
+        {
+        "nom":"Death Note - Statue L & Watari Diorama", 
+        "prix":549.90, 
+        "reference":{
+            "serie":"Death Note",
+            "personnages":["L","Watari Diorama"] 
+        },
+        "taille":42, 
+        "matiere":"Résine",
+        "editeur":"Oniri Creations",
+        "nbEnStock":999,
+        "dateDeSortie": new Date("2023-12-14")
+    }
+]
+
+db.figurines.insertMany(figurines)

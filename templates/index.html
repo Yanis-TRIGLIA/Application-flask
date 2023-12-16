@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://img.gaming.gentside.com/s3/frgsg/1280/manga/default_2022-04-14_f004c34d-a498-4824-9b76-8381ad0e3d63.jpeg" type="image/x-icon">   
+    <title>Kawai Land</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://i.pinimg.com/originals/f1/63/11/f16311fd0c32786525f471c685bc516e.gif);
+        }
+        
+        li {
+            margin: 30px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-left: groove;
+            border-right: groove;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .actions {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .actions a {
+            text-decoration: none;
+            color: #3498db;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .actions a:hover {
+            background-color: #ecf0f1;
+        }
+        
+        input {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+        .titre{
+            text-align: center;
+            color: white;
+        }
+
+        button.recherche {
+            background-color: darkblue;
+            padding: 10px 100px;
+            display: flex;
+            border-left-style: groove;
+            justify-content: center;
+        }
+        #formulaire {
+            display: none;
+            background-color: oldlace;
+          }
+        .input-form{
+            color: black;
+            display: inline;
+            margin: 10px 20px;
+            padding: 21px;
+            background-color: white;
+            border-radius: 10px;
+            
+        }
+        .radio_button {
+            padding: 2px 40%;
+            border-radius: 10px;
+        }
+        button.validate {
+            padding: 5px 50%;
+        }
+        .search{
+            background-color: beige;
+
+        }
+        label .mat{
+            padding: 1px 23%;
+        }
+        button.recherche {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 10%;
+            border: 1px solid darkblue;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            margin: 10px 35%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button.recherche:hover {
+            background-color: royalblue; 
+        }
+        button.cree {
+            background-color: darkblue;
+            color: white;
+            padding: 10px 11.5%;
+            border: 1px solid darkblue;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            margin: 10px 35%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button.cree:hover {
+            background-color: royalblue; 
+        }
+
+        #formulaire_create {
+            display: none;
+        }
+        #formulaire_create {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        
+        .content {
+            padding: 20px;
+            margin: 20px -100%;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300%;
+        }
+        .date{
+            background-color: #ffffff;
+            color: black;
+            border-radius: 8px;
+            border-color : black
+
+        }
+        a {
+            text-decoration: none; 
+            color: inherit; 
+            cursor: pointer; 
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+   
+        
+        
+        
+        
+        
+    </style>
+</head>
+
+
+<body>
+    <h1 class="titre">Kawai Land</h1>
+    
+
+
+    <script>
+        function showForm() {
+            var formulaire = document.getElementById('formulaire');
+            if (formulaire.style.display === 'block' || formulaire.style.display === '') {
+                formulaire.style.display = 'none';
+            } else {
+                formulaire.style.display = 'block';
+            }
+        }
+        
+        function showCreate() {
+            var formulaire = document.getElementById('formulaire_create');
+            if (formulaire.style.display === 'block' || formulaire.style.display === '') {
+                formulaire.style.display = 'none';
+            } else {
+                formulaire.style.display = 'block';
+            }
+
+    }
+    </script>    
+
+    <button onclick="showCreate()" class="cree">Crée une figurine</button>
+    <form id="formulaire_create" action="/create" method="post">
+        <div class="content">
+        <p>
+            <b><label for="content">creation d'un figurine</label></b>
+        </p>
+        <p>
+            <input class="input-form" type="text" name="nom" placeholder="nom figurine"/>
+            <input class="input-form" type="number" name="prix" placeholder="prix figurine"/>
+            <input class="input-form" type="text" name="serie" placeholder="serie figurine"/>
+            <input class="input-form" type="text" name="personnages" placeholder="personnages figurine - separé par des /"/>
+            <input class="input-form" type="number" name="taille" placeholder="taille figurine"/>
+            <div>
+                <p><label for="matiere">matiére de la figurine</label></p>
+                <input type="radio" name="matiere" id="matiere-0" required value="Résine"/>
+                <label for="matiere-0">Résine</label>
+                <input type="radio" name="matiere" id="matiere-1" required value="PVC"/>
+                <label for="matiere-1">PVC</label>
+                <input type="radio" name="matiere" id="matiere-2" required value="Résine/PVC"/>
+                <label for="matiere-2">Résine/PVC</label>
+            </div>
+            <input class="input-form" type="text" name="editeur" placeholder="editeur figurine"/>
+            <input class="input-form"type="number" name="nbEnStock" placeholder="nombre en stock figurine"/>
+            <input type="date" class="date" name="dateDeSortie" placeholder="date de sortie figurine"/>
+            
+        </p>
+        <button class="validate" type="submit">Crée</button>
+    </div>
+    </form>
+
+
+
+    <button onclick="showForm()" class="recherche">Rechercher une figurine</button>
+        <form id="formulaire" action="/result" method="post">
+            <hr>
+            <div>
+                <p>
+                    <b><label for="content">Recherche</label></b>
+                </p>
+                <p>
+                    <input type="text" class="input-form" name="nom" placeholder="Nom figurine"/>
+                    <input type="text" class="input-form" name="personnage" placeholder="Nom Personnages"/>
+                    <input type="number" class="input-form" name="prix" placeholder="Prix"/>
+                    <input type="text" class="input-form" name="serie" placeholder="Serie"/>
+                    <input type="number" class="input-form" name="taille" placeholder="Taille"/>
+                </p>
+                <div class="radio_button">
+                    <p><label class="mat" for="matiere">Matiére de la figurine</label></p>
+                    <input type="radio" name="matiere" id="matiere-0" required value="Résine"/>
+                    <label for="matiere-0">Résine</label>
+                    <input type="radio" name="matiere" id="matiere-1" required value="PVC"/>
+                    <label for="matiere-1">PVC</label>
+                    <input type="radio" name="matiere" id="matiere-2" required value="Résine/PVC"/>
+                    <label for="matiere-2">Résine/PVC</label>
+                </div> 
+                <button class="validate" type="submit">rechercher</button>
+            </div>
+            </hr>
+         </form>
+
+
+
+
+    <ul>
+        {% for figurine in figurines %}
+        <li>
+            <form id="read_form" method="POST" action="{{ url_for('read', id=figurine['_id']) }}" >
+                <div>
+                    <button >
+                        <a href="{{url_for('read', id=figurine['_id'])}}">{{ figurine['nom'] }} : {{figurine['prix']}}</a>
+
+                    </button>
+                </div>
+            </form>
+            <div class="actions">
+                <form id="delete_form" method="POST" action="{{ url_for('delete', id=figurine['_id']) }}" >
+                    <input type="submit" value="Supprimer la figurine"
+                           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entrée?')">
+                </form>
+
+                <a href="{{url_for('update', id=figurine['_id'])}}">Modifier les infos de la figurine</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

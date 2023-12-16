@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Page Figurine {{ figurine.reference['personnages'] }}</title>
+    <link rel="stylesheet" href="read.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        padding: 0;
+        background-image: url(https://usagif.com/wp-content/uploads/2022/fzk5d/naruto-gif-wallpaper-1280-688px-16.gif);
+        background-size: ;
+        background-position: center;
+        
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        font-size:20px
+    }
+    h1, p {
+        text-align: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: black;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+</style>
+
+    <div class="container">
+        <h1>Fiche Figurine :</h1>
+        
+    
+        <table>
+            <tr>
+                <th>Information</th>
+                <th>valeur</th>
+            </tr>
+            <tr>
+                <td>Nom</td>
+                <td>{{ figurine['nom'] }}</td>
+            </tr>
+            <tr>
+                <td>Prix</td>
+                <td>{{ figurine['prix'] }}</td>
+            </tr>
+            <tr>
+                <td>Référence</td>
+                <td>
+                    <ul>
+                        <li>Série: {{ figurine.reference['serie'] }}</li>
+                        <li>Personnage: {{ figurine.reference['personnages'] }}</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Taille</td>
+                <td>{{ figurine['taille'] }}</td>
+            </tr>
+            <tr>
+                <td>Matière</td>
+                <td>{{ figurine['matiere'] }}</td>
+            </tr>
+            <tr>
+                <td>Éditeur</td>
+                <td>{{ figurine['editeur'] }}</td>
+            </tr>
+            <tr>
+                <td>Version</td>
+                <td>{{ figurine['version'] }}</td>
+            </tr>
+            <tr>
+                <td>Nombre en stock</td>
+                <td>{{ figurine['nbEnStock'] }}</td>
+            </tr>
+            <tr>
+
+
+                <td>Date de sortie</td>
+                <td type>{{ figurine['dateDeSortie'] }}</td>
+            </tr>
+        </table>
+    </div>
+    <a href="{{url_for('index')}}">Retour à la page d'accueil</a>
+</body>
+</html>

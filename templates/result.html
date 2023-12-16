@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultat</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://www.cjoint.com/doc/22_10/LJhx05V3V6O_le-thousand-sunny-fond-decran-anime-de-one-piece.gif);
+            background-size: ;
+            background-position: center;
+        }
+        
+        
+        li {
+            margin: 30px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-left: groove;
+            border-right: groove;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 3px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .actions {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .actions a {
+            text-decoration: none;
+            color: #3498db;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        .actions a:hover {
+            background-color: #ecf0f1;
+        }
+        
+        input {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+        .titre{
+            text-align: center;
+        }
+
+        button.recherche {
+            background-color: darkblue;
+            padding: 10px 100px;
+            display: flex;
+            border-left-style: groove;
+            justify-content: center;
+        }
+
+        a {
+            text-decoration: none; 
+            color: inherit; 
+            cursor: pointer; 
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
+</head>
+<body class="body">
+    <h1 class="titre">Page de Resultat</h1>
+
+
+    <ul>
+        {% for fig in figurine %}
+        <li>
+                <div>
+                    <button >
+                        
+                        <a href="{{url_for('read', id=fig['_id'])}}">{{ fig['nom'] }} : {{fig['prix']}}</a>
+
+                    </button>
+                </div>
+        </li>
+        {% endfor %}
+        <a href="{{url_for('index')}}">Retour à la page d'accueil</a>
+
+    </ul>
+
+</body>
+</html>
