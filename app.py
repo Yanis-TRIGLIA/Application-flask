@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from flask import Flask, render_template, request, url_for, redirect,jsonify
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
@@ -9,8 +12,7 @@ import re
 
 app = Flask(__name__)
 
-
-uri = "mongodb+srv://Admin:admin@cluster0.3xux2wd.mongodb.net/?retryWrites=true&w=majority"
+uri = os.getenv("MONGODB_URI")
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 
