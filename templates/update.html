@@ -11,7 +11,7 @@
             background-image: url(https://www.dragon-ball-gif.com/wp-content/uploads/2021/08/Son-Gohan-tenue-piccolo-cape.gif);
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 100%%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,7 +33,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            width: 50%;
+            width: 80%; /* Ajusté la largeur du formulaire */
             max-width: 600px;
             margin: 20px 0;
         }
@@ -44,19 +44,8 @@
             color: black;
         }
 
-        .input-form {
+        input {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            color: black;
-        }
-
-        .date {
-            width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 15px;
             box-sizing: border-box;
@@ -86,30 +75,66 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            margin-top: 10px; /* Ajouté une marge en haut des liens */
         }
-        .texte_noir{
-            color:black;
+
+        .texte_noir {
+            color: black;
         }
     </style>
 </head>
 <body>
-    <h1 class="texte_noir">Update</h1>
     <hr>
+    
     {% for figurine in figurine %}
     <form action="{{url_for('commitUpdate', id=figurine['_id'])}}" method="post">
-        <label for="nom">Nom de la figurine:</label>
-        <input class="input-form" type="text" name="nom" value="{{figurine['nom']}}"/>
-
-        <label for="prix">Prix:</label>
-        <input class="input-form" type="number" name="prix" value="{{figurine['prix']}}"/>
-
-
-        <label for="dateDeSortie">Date de sortie:</label>
-        <input class="date" type="date" name="dateDeSortie" value="{{figurine['dateDeSortie']}}"/>
-
+        <p>
+            <b><label for="content">Modifier information de figurine</label></b>
+        </p>
+        <p>
+            <input type="text" name="nom" value="{{figurine['nom']}}"/>
+            <input type="text" name="prix" value="{{figurine['prix']}}"/>
+            <input type="text" name="serie" value="{{figurine['reference']['serie']}}"/>
+            <input type="text" name="personnages" value="{{figurine['reference']['personnages']}}"/>
+            <input type="text" name="taille" value="{{figurine['taille']}}"/>
+            {% if figurine['matiere'] == Résine%}
+                <div >
+                    <p><label for="matiere">matiére de la figurine</label></p>
+                    <input type="radio" name="matiere" id="matiere-0" required  checked value="Résine"/>
+                    <label for="matiere-0">Résine</label>
+                    <input type="radio" name="matiere" id="matiere-1" required value="PVC"/>
+                    <label for="matiere-1">PVC</label>
+                    <input type="radio" name="matiere" id="matiere-2" required value="Résine/PVC"/>
+                    <label for="matiere-2">Résine/PVC</label>
+                </div>
+            {% elif figurine['matiere'] == PVC %}
+                <div>
+                    <p><label for="matiere">matiére de la figurine</label></p>
+                    <input type="radio" name="matiere" id="matiere-0" required value="Résine"/>
+                    <label for="matiere-0">Résine</label>
+                    <input type="radio" name="matiere" id="matiere-1" required checked value="PVC"/>
+                    <label for="matiere-1">PVC</label>
+                    <input type="radio" name="matiere" id="matiere-2" required value="Résine/PVC"/>
+                    <label for="matiere-2">Résine/PVC</label>
+                </div>
+            {% else %}
+                <div>
+                    <p><label for="matiere">matiére de la figurine</label></p>
+                    <input type="radio" name="matiere" id="matiere-0" required value="Résine"/>
+                    <label for="matiere-0">Résine</label>
+                    <input type="radio" name="matiere" id="matiere-1" required value="PVC"/>
+                    <label for="matiere-1">PVC</label>
+                    <input type="radio" name="matiere" id="matiere-2" required checked value="Résine/PVC"/>
+                    <label for="matiere-2">Résine/PVC</label>
+                </div>
+            {% endif %}
+            <input type="text" name="editeur" value="{{figurine['editeur']}}"/>
+            <input type="text" name="nbEnStock" value="{{figurine['nbEnStock']}}"/>
+            <input type="date" name="dateDeSortie" value="{{figurine['dateDeSortie']}}"/>
+        </p>
         <button type="submit">Submit</button>
     </form>
     {% endfor %}
-    <a class="texte_noir" href="{{url_for('index')}}">Retour à la page d'accueil</a>
+    <a href="{{url_for('index')}}">retour page d'acceuil</a>
 </body>
 </html>

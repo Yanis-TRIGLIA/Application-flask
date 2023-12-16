@@ -13,7 +13,6 @@ import re
 app = Flask(__name__)
 
 uri = os.getenv("MONGODB_URI")
-
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 try:
